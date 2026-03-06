@@ -13,5 +13,9 @@ info.txt
 info.md
 
 *zip
+<<<<<<< HEAD
 *pdf
 *txt
+=======
+*pdf
+>>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
