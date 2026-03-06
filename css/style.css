@@ -1,0 +1,1359 @@
+/* ==========================================================================
+   ГЛОБАЛЬНЫЙ СБРОС И БАЗОВЫЕ НАСТРОЙКИ
+   Эти правила применяются ко всем элементам страницы сразу.
+   Делаем это первым делом, чтобы браузер не добавлял свои
+   "умолчания", которые могут сломать нашу разметку.
+   ========================================================================== */
+
+/* box-sizing: border-box — говорит браузеру:
+   "ширина элемента — это его полная ширина вместе с padding и border,
+   а не только внутренняя область".
+   Без этого, если задать width: 200px и padding: 10px,
+   реальная ширина стала бы 220px — это путает и ломает сетку.
+   Звёздочка (*) означает "применить ко всем элементам". */
+* {
+  box-sizing: border-box;
+}
+
+/* Убираем подчёркивание у всех ссылок по умолчанию —
+   дизайн сам решает, где нужна линия, а где нет.
+   display: inline-block нужен, чтобы можно было задавать
+   ссылкам padding и height, как обычным блокам. */
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Браузеры по умолчанию добавляют маркеры (точки/цифры) к спискам
+   и отступы. Сбрасываем всё это — стили зададим там, где нужно. */
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   СБРОС СТИЛЕЙ ЗАГОЛОВКОВ (h1–h6)
+   Браузер по умолчанию задаёт заголовкам крупный жирный шрифт
+   и вертикальные отступы (margin). Это ломает дизайн, если мы
+   заменяем <div class="title"> на <h2 class="title">:
+   заголовок вдруг стал большим и жирным "сам по себе".
+
+   Решение: сбросить ВСЕ браузерные стили заголовков до нуля.
+   Визуальный стиль (размер, цвет, жирность) задаётся исключительно
+   через классы (.services__title, .about__title и т.д.) — так дизайн
+   не зависит от того, какой тег использован: div, h2 или h3.
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;         /* убираем вертикальные отступы браузера */
+  padding: 0;        /* убираем внутренние отступы браузера */
+  font-size: inherit;   /* наследует размер от родителя (не "крупный" браузерный) */
+  font-weight: inherit; /* наследует жирность от родителя (не "bold" браузерный) */
+  line-height: inherit; /* наследует межстрочный интервал */
+}
+
+/* Аналогично сбрасываем стили <blockquote> (цитата) и <cite> (автор цитаты),
+   которые браузер по умолчанию делает курсивными с отступами. */
+blockquote, cite {
+  margin: 0;
+  padding: 0;
+  font-style: normal; /* убираем курсив по умолчанию */
+}
+
+/* Сбрасываем стили <figure> (контейнер медиа) и <address> (контакты):
+   браузер добавляет margin и курсив — убираем. */
+figure, address {
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+}
+
+
+/* ==========================================================================
+   КОНТЕЙНЕР
+   Универсальный блок-обёртка для контента всех секций.
+   Нужен, чтобы контент не прилипал к краям экрана
+   и не растягивался на всю ширину монитора.
+   ========================================================================== */
+
+/* max-width: 1170px — контент не будет шире 1170px
+   (типичная ширина для десктопного дизайна).
+   margin: 0 auto — центрирует блок горизонтально на странице.
+   padding: 0 15px — защитные поля слева и справа,
+   чтобы текст не прилипал к краю на маленьких экранах. */
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+
+/* ==========================================================================
+   БАЗОВАЯ ТИПОГРАФИКА (тело страницы)
+   Задаём шрифт, размер и цвет для всей страницы сразу.
+   Дочерние элементы унаследуют эти значения автоматически,
+   и нам не придётся повторять их везде.
+   ========================================================================== */
+
+/* PT Serif — классический шрифт с засечками для основного текста,
+   хорошо читается в длинных абзацах.
+   font-size: 14px — стандартный базовый размер.
+   line-height: 18px — межстрочный интервал, текст не будет слипаться.
+   color: #5e5e5e — тёмно-серый (не чёрный) — мягче для глаз. */
+body {
+  font-family: 'PT Serif', serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #5e5e5e;
+}
+
+/* Для шапки и некоторых заголовков используем Roboto —
+   это sans-serif (без засечек), он выглядит современно
+   и хорошо подходит для UI-элементов, кнопок, меню. */
+header,
+.slider__btn,
+.slider__title {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+/* ==========================================================================
+   ШАПКА — ВЕРХНЯЯ ТЁМНАЯ ПОЛОСКА (.header__top)
+   Узкая полоска над логотипом с телефоном, e-mail и кнопкой консультации.
+   Выполнена в тёмном цвете, чтобы визуально отделить
+   "служебную" информацию от основного меню.
+   ========================================================================== */
+
+/* Тёмно-серый фон — классический приём для верхнего инфо-бара,
+   создаёт контраст с белой основной шапкой ниже. */
+.header__top {
+  background-color: #303030;
+}
+
+/* Жёлтая кнопка "Бесплатная консультация".
+   float: right — прижимает кнопку к правому краю контейнера,
+   пока телефон и e-mail остаются слева.
+   line-height: 36px — вертикальное выравнивание текста внутри.
+   padding-left: 50px — оставляем место для иконки-портфеля слева.
+   transition — плавное изменение фона при наведении (0.25 секунды). */
+.header__btn {
+  float: right;
+  line-height: 36px;
+  color: #1b1b1b;
+  background-color: #ffc222;
+  padding: 5px 20px 4px 50px;
+  font-size: 16px;
+  position: relative;
+  transition: background-color 0.25s ease;
+}
+
+/* При наведении кнопка темнеет — визуальный отклик.
+   Тёмный жёлтый (#e6a800) создаёт ощущение "нажатия". */
+.header__btn:hover {
+  background-color: #e6a800;
+}
+
+/* Иконка портфеля перед текстом кнопки.
+   Вставляется через CSS псевдоэлемент :before — не нужно
+   добавлять лишний HTML-тег. Шрифт icomoon содержит все иконки проекта.
+   \f0b1 — это код иконки портфеля в шрифте icomoon. */
+.header__btn:before {
+  font-family: 'icomoon';
+  content: "\f0b1";
+  position: absolute;
+  left: 22px;
+  color: #1b1b1b;
+}
+
+/* Clearfix — "магический" трюк для float-элементов.
+   Когда внутри блока есть float (кнопка прижата вправо),
+   родительский блок "схлопывается" и не видит float-детей.
+   Псевдоэлемент :after с clear: both заставляет родителя
+   учитывать высоту float-элементов. */
+.header__contacts:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+/* Телефон и e-mail — светло-серые ссылки на тёмном фоне.
+   position: relative нужен для позиционирования иконок через :before. */
+.header__phone,
+.header__email {
+  color: #cbcacb;
+  letter-spacing: 0.25px;
+  line-height: 45px;
+  position: relative;
+}
+
+/* Отступы телефона: слева — место для иконки трубки,
+   справа — пробел между телефоном и e-mail. */
+.header__phone {
+  padding-left: 20px;
+  padding-right: 30px;
+}
+
+/* Иконки перед телефоном (\f095 — трубка) и e-mail (\f003 — конверт).
+   Жёлтый цвет — акцентный цвет сайта, создаёт визуальный ритм. */
+.header__phone:before,
+.header__email:before {
+  font-family: 'icomoon';
+  content: "\f095";
+  position: absolute;
+  left: 0;
+  color: #ffc222;
+}
+
+/* Переопределяем иконку для e-mail — конверт вместо трубки. */
+.header__email:before {
+  content: "\f003";
+}
+
+.header__email {
+  padding-left: 24px;
+}
+
+
+/* ==========================================================================
+   ШАПКА — ОСНОВНАЯ ЧАСТЬ (.header__content)
+   Блок с логотипом слева и навигационным меню справа.
+   ========================================================================== */
+
+/* Вертикальные отступы создают "воздух" вокруг логотипа и меню. */
+.header__content {
+  padding: 34px 0px 23px;
+}
+
+/* Flexbox — современный способ расположить логотип и меню
+   в одну строку с автоматическим расстоянием между ними.
+   justify-content: space-between — логотип прижат влево,
+   меню прижато вправо, пространство распределяется между ними. */
+.header__content-inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* ==========================================================================
+   НАВИГАЦИОННОЕ МЕНЮ (.menu)
+   Горизонтальный список ссылок на разделы сайта.
+   ========================================================================== */
+
+/* Пункты меню по умолчанию — блочные элементы (каждый на новой строке).
+   inline-block делает их строчными — пункты встают в ряд. */
+.menu li {
+  display: inline-block;
+}
+
+/* Стили для ссылок меню:
+   border: 1px solid transparent — "невидимая" рамка.
+   Она уже занимает место, поэтому при наведении (hover)
+   рамка просто становится жёлтой без сдвига соседних элементов.
+   transition: all .3s — плавное появление рамки за 0.3 секунды. */
+.menu a {
+  color: #323232;
+  font-size: 16px;
+  line-height: 36px;
+  border: 1px solid transparent;
+  padding: 0px 16px;
+  transition: all .3s;
+}
+
+/* При наведении рамка становится видимой (жёлтой). */
+.menu a:hover {
+  border-color: #ffc222;
+}
+
+/* Дополнительный отступ между пунктами меню —
+   чтобы рамки соседних ссылок не сливались. */
+.menu li+li {
+  padding-left: 10px;
+}
+
+
+/* ==========================================================================
+   МОДАЛЬНОЕ ОКНО (#modal)
+   Скрытый блок с формой, который появляется поверх страницы
+   при клике на кнопки "Бесплатная консультация" / "Оставить заявку".
+   Управляется библиотекой Fancybox через data-fancybox в HTML.
+   ========================================================================== */
+
+/* Скрываем блок по умолчанию. */
+#modal {
+  display: none;
+}
+
+
+/* ==========================================================================
+   СЕКЦИЯ СЛАЙДЕРА (.slider)
+   Большой полноширинный баннер с фоновым изображением,
+   поверх которого слайдер показывает заголовки и кнопки.
+   ========================================================================== */
+
+/* background-size: cover — фото масштабируется так, чтобы
+   полностью покрыть блок, не оставляя пустых мест.
+   background-position: center — фото всегда центрировано.
+   min-height: 500px — минимальная высота, чтобы контент не сплющился. */
+.slider {
+  background-image: url(../img/slider-fon.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+}
+
+/* Убираем синюю рамку фокуса (outline) у слайдов —
+   она появляется когда Slick навигирует клавиатурой,
+   выглядит некрасиво на фоновом изображении. */
+.slider__item {
+  outline: none;
+}
+
+/* Контент каждого слайда центрируем и ограничиваем ширину —
+   чтобы на широких экранах текст не растягивался на всю ширину.
+   padding-top: 110px опускает контент вниз от верхнего края слайда.
+
+   animation: fadeInUp — при переключении слайдов контент
+   плавно "въезжает" снизу вверх (анимация определена ниже в @keyframes).
+   animation-duration: 0.7s — длительность одного цикла.
+   animation-fill-mode: both — стили из первого кадра применяются
+   до начала анимации (элемент невидим до старта). */
+.slider__item-content {
+  text-align: center;
+  padding-top: 110px;
+  max-width: 665px;
+  margin: 0 auto;
+  animation: fadeInUp 0.7s ease both;
+}
+
+/* Крупный белый заголовок слайда.
+   text-transform: uppercase — весь текст заглавными буквами.
+   letter-spacing: 1.5px — разряд букв улучшает читаемость верхнего регистра. */
+.slider__title {
+  text-transform: uppercase;
+  font-size: 30px;
+  line-height: 36px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  margin-bottom: 22px;
+}
+
+/* Подзаголовок слайда — чуть меньше и светлее чем заголовок. */
+.slider__text {
+  font-size: 18px;
+  line-height: 24px;
+  color: #d3d2d2;
+  margin-bottom: 50px;
+}
+
+
+/* ==========================================================================
+   @KEYFRAMES — АНИМАЦИИ
+   @keyframes описывает "сценарий" анимации: что происходит
+   в начале (from / 0%) и в конце (to / 100%).
+   Браузер сам плавно изменяет свойства между этими точками.
+
+   Использование: задать элементу animation: имяАнимации длительность.
+   ========================================================================== */
+
+/* fadeInUp — элемент появляется снизу вверх с нарастанием прозрачности.
+   Используется для контента слайдера.
+   from: элемент прозрачный (opacity: 0) и сдвинут вниз на 25px.
+   to:   элемент полностью видим и на своём месте. */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* pulse — пульсирующее увеличение, как удар сердца.
+   Используется для иконок карточек при наведении.
+   Масштаб: обычный (1) → чуть больше (1.12) → снова обычный (1). */
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+
+/* ==========================================================================
+   УНИВЕРСАЛЬНАЯ КНОПКА (.default-btn)
+   Используется во многих секциях сайта — в слайдере, услугах, о компании.
+   Характерная особенность: правая жёлтая "полочка" со стрелкой.
+   ========================================================================== */
+
+/* border-right-width: 20px — правая граница в 20px создаёт
+   визуальный "хвост" кнопки, в котором живёт стрелка.
+   position: relative — нужно для позиционирования стрелки через :after.
+   transition — плавное изменение при hover:
+     transform — для эффекта подъёма кнопки,
+     box-shadow — для появления тени. */
+.default-btn {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 24px;
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 30px 8px 24px;
+  border: 1px solid #ffc222;
+  border-right-width: 20px;
+  position: relative;
+  outline: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* При наведении кнопка поднимается на 3px вверх (translateY(-3px)).
+   Это создаёт иллюзию "парения" — классический UI-эффект.
+   box-shadow добавляет жёлтоватую тень снизу, усиливая эффект подъёма. */
+.default-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(255, 194, 34, 0.45);
+}
+
+/* Стрелка ›  вставляется через :after — не нужен HTML-тег.
+   top: 50% + transform: translateY(-50%) — идеальное центрирование по вертикали.
+   right: -12px — стрелка находится внутри жёлтой полочки. */
+.default-btn:after {
+  content: "\f105";
+  font-family: 'icomoon';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -12px;
+}
+
+/* position: relative на обёртке слайдера нужен,
+   чтобы кнопки-стрелки навигации (slick-prev/next)
+   с position: absolute позиционировались относительно него. */
+.slider__inner {
+  position: relative;
+}
+
+
+/* ==========================================================================
+   КНОПКИ НАВИГАЦИИ СЛАЙДЕРА (.slick-btn)
+   Стрелки "влево" / "вправо" для переключения слайдов.
+   Создаются JavaScript-библиотекой Slick, мы только стилизуем их.
+   ========================================================================== */
+
+/* position: absolute — кнопки "плавают" поверх слайдера.
+   z-index: 3 — поверх фонового изображения.
+   top: 70% — кнопки расположены в нижней трети слайдера.
+   transition — плавное изменение фона при наведении. */
+.slick-btn {
+  position: absolute;
+  top: 70%;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  outline: none;
+  background-color: #ffc222;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* При наведении кнопка немного увеличивается. */
+.slick-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Когда кнопка неактивна (нет следующего/предыдущего слайда),
+   Slick добавляет класс .slick-disabled.
+   Убираем жёлтый фон, отключаем hover-эффект. */
+.slick-btn.slick-disabled {
+  cursor: default;
+  background-color: transparent;
+}
+
+.slick-btn.slick-disabled:hover {
+  transform: none;
+}
+
+/* Иконка стрелки внутри кнопки.
+   Двойной transform: translate(-50%, -50%) + top/left: 50% —
+   идеальное центрирование иконки внутри квадратной кнопки. */
+.slick-btn:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'icomoon';
+  color: #fff;
+}
+
+.slick-next:before {
+  content: "\f105";
+}
+
+.slick-prev:before {
+  content: "\f104";
+}
+
+.slick-next {
+  right: 0;
+}
+
+.slick-prev {
+  left: 0;
+}
+
+
+/* ==========================================================================
+   СЕКЦИЯ УСЛУГИ (.services)
+   Три карточки услуг в ряд с иконкой, заголовком, описанием и кнопками.
+   ========================================================================== */
+
+.services {
+  padding: 50px 0px 30px;
+}
+
+/* Заголовочные блоки секций "Услуги" и "Новости" —
+   одинаковая структура: заголовок+текст слева, кнопка справа. */
+.services__top,
+.news__top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+/* Блок с заголовком и описанием секции.
+   padding-left: 140px — оставляем слева место для жёлтой линии-декора.
+   position: relative — нужно для абсолютно позиционированной линии (:before). */
+.services__title-box,
+.form__title-box,
+.news__title-box {
+  max-width: 520px;
+  padding-left: 140px;
+  position: relative;
+}
+
+/* Жёлтая горизонтальная линия-акцент перед заголовком.
+   Вставляется через :before — не нужен лишний HTML.
+   Ширина 100px, высота 2px — тонкая декоративная черта. */
+.services__title-box:before,
+.form__title-box:before,
+.news__title-box:before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background-color: #ffc222;
+  left: 0;
+  top: 11px;
+}
+
+/* Заголовки секций — крупнее основного текста, жирнее, тёмного цвета. */
+.services__title,
+.form__title,
+.news__title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #212020;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
+}
+
+.services__text,
+.form__text,
+.news__text {
+  letter-spacing: 0.1px;
+}
+
+/* Кнопки "Показать все услуги" / "Открыть все новости".
+   transition — плавное изменение цвета рамки при наведении. */
+.services__btn a,
+.news__btn a {
+  color: #373636;
+  line-height: 24px;
+  letter-spacing: 0.25px;
+  padding: 5px 38px;
+  border: 3px solid #e6e6e6;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+/* При наведении рамка становится жёлтой. */
+.services__btn a:hover,
+.news__btn a:hover {
+  border-color: #ffc222;
+  color: #1b1b1b;
+}
+
+/* Три карточки услуг в ряд — используем CSS Grid.
+   Grid здесь предпочтительнее Flexbox: нам нужна строгая сетка
+   с равными столбцами и равными отступами между ними.
+
+   grid-template-columns: repeat(3, 1fr) — создаёт 3 колонки,
+   каждая занимает 1 долю (fr = fraction) свободного пространства.
+   Все три колонки всегда одинаковой ширины, независимо от контента.
+
+   gap: 20px — расстояние между карточками (заменяет margin между элементами).
+   С Grid не нужны дополнительные классы для отступов — gap делает всё сам.
+
+   В отличие от Flexbox, Grid гарантирует выравнивание по двум осям:
+   и по горизонтали, и по вертикали — карточки всегда в строгой сетке. */
+.services__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Карточка услуги:
+   position: relative — для кнопок в нижней части через position: absolute.
+   min-height: 375px — все карточки одинаковой высоты.
+   overflow: hidden — нужен для CSS-эффекта zoom на изображении:
+   когда img масштабируется при hover, он не должен вылезать за края карточки.
+   transition — плавный подъём и усиление тени при наведении. */
+/* max-width здесь больше не нужен: ширину карточки теперь
+   контролирует Grid (колонка 1fr), а не сам элемент. */
+.services__item {
+  text-align: center;
+  padding: 30px 0px 80px;
+  position: relative;
+  min-height: 375px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 7px 24.3px 2.7px rgba(91, 89, 89, 0.14);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* При наведении карточка "приподнимается" на 8px.
+   Тень становится больше и темнее — усиливает иллюзию подъёма. */
+.services__item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 18px 36px 4px rgba(91, 89, 89, 0.22);
+}
+
+/* Иконка услуги (PNG-изображение).
+   transition — плавное масштабирование при наведении на карточку.
+   overflow: hidden на родителе (.services__item) предотвращает выход
+   увеличенного изображения за края карточки. */
+.services__item img {
+  transition: transform 0.45s ease;
+}
+
+/* При наведении на карточку иконка плавно увеличивается на 10%.
+   Обратите внимание: hover на .services__item (карточке), а не на img —
+   это значит эффект срабатывает при наведении на ЛЮБУЮ часть карточки. */
+.services__item:hover img {
+  transform: scale(1.1);
+}
+
+.services__item-title {
+  color: #212020;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  padding: 24px 0;
+}
+
+.services__item-text {
+  letter-spacing: 0.1px;
+  padding: 0px 30px 30px;
+}
+
+/* Блок с кнопками прибит к нижнему краю карточки.
+   position: absolute + bottom: 40px — не зависит от длины текста. */
+.services__item-btn {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+}
+
+.services__item-btn .default-btn {
+  color: #373636;
+}
+
+.services__item-btn .default-btn:after {
+  color: #fff;
+}
+
+/* Ссылка "Подробнее" — подчёркнута снизу вместо обычного underline. */
+.services__item-link {
+  color: #050505;
+  font-family: 'Roboto', sans-serif;
+  border-bottom: 1px solid #050505;
+  margin-right: 60px;
+}
+
+
+/* ==========================================================================
+   СЕКЦИЯ О КОМПАНИИ (.about)
+   Блок с фоновым фото и текстом о компании слева.
+   ========================================================================== */
+
+.about {
+  background-image: url(../img/about-fon.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  background-repeat: no-repeat;
+  padding: 25px 0px 45px;
+}
+
+/* Ограничиваем ширину блока с текстом — 545px,
+   чтобы текст не залезал на правую часть фото с людьми. */
+.about__inner {
+  max-width: 545px;
+}
+
+.about__title {
+  padding: 10px 0px 25px;
+  font-size: 24px;
+  line-height: 24px;
+  color: #fff;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+}
+
+.about__text {
+  margin-bottom: 20px;
+  letter-spacing: 0.1px;
+  line-height: 24px;
+  color: #d3d2d2;
+}
+
+/* Список направлений компании в секции "О компании".
+   Стилизуем как маркированный список с жёлтой точкой вместо стандартного маркера. */
+.about__list {
+  margin-bottom: 30px;
+}
+
+.about__list li {
+  color: #d3d2d2;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+/* Кастомный маркер списка — жёлтая точка через :before.
+   Стандартный list-style убран в глобальном сбросе,
+   поэтому рисуем свой через псевдоэлемент. */
+.about__list li:before {
+  content: "•";
+  color: #ffc222;
+  position: absolute;
+  left: 0;
+}
+
+.about__btn.default-btn:after {
+  color: #000;
+}
+
+
+/* ==========================================================================
+   СЕКЦИЯ ФОРМА (.form)
+   Форма обратной связи с декоративным фоновым изображением справа.
+   Разделена на две колонки: поля слева, textarea справа.
+   ========================================================================== */
+
+.form {
+  padding-top: 30px;
+}
+
+.form__inner {
+  padding-bottom: 40px;
+  background-image: url(../img/form-fon.png);
+  background-repeat: no-repeat;
+  min-height: 460px;
+  background-position: bottom right;
+}
+
+.form__box {
+  max-width: 850px;
+  padding-top: 45px;
+}
+
+/* Две колонки внутри формы. */
+.form__box-inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__box-left {
+  max-width: 260px;
+  width: 100%;
+}
+
+.form__box-right {
+  max-width: 555px;
+  width: 100%;
+}
+
+/* label, input и textarea — блочные элементы на всю ширину колонки. */
+.form__box-inner label, .form__box-inner input, .form__box-inner textarea {
+  display: block;
+  width: 100%;
+}
+
+.form__box-inner label {
+  line-height: 36px;
+  color: #282828;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Поля ввода — тонкая серая рамка, плавное выделение при фокусе.
+   transition на border-color — рамка плавно меняет цвет
+   когда пользователь кликает в поле (focus). */
+.form__box-inner input {
+  margin-bottom: 8px;
+  outline: none;
+  height: 40px;
+  border: 1px solid #e6e6e6;
+  padding: 0px 10px;
+  transition: border-color 0.2s ease;
+}
+
+/* При фокусе (клике в поле) рамка становится жёлтой —
+   пользователь понимает что именно это поле сейчас активно. */
+.form__box-inner input:focus {
+  border-color: #ffc222;
+}
+
+.form__box-inner select {
+  outline: none;
+  padding-left: 17px;
+}
+
+
+/* ==========================================================================
+   КАСТОМНЫЙ СТИЛЬ SELECT (jQuery FormStyler)
+   Библиотека FormStyler заменяет стандартный выпадающий список
+   кастомным, который выглядит одинаково во всех браузерах.
+   ========================================================================== */
+
+.form__box-inner .jq-selectbox.jqselect {
+  display: block;
+  width: 100%;
+}
+
+.form__box-inner .jq-selectbox__select {
+  height: 40px;
+  border: 1px solid #e6e6e6;
+  padding-left: 17px;
+}
+
+/* Стрелка кастомного селекта — иконка из icomoon, повёрнутая на 90°. */
+.form__box-inner .jq-selectbox__trigger-arrow:before {
+  content: "\f105";
+  font-family: 'icomoon';
+  position: absolute;
+  right: 17px;
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.form__box-inner .jq-selectbox__dropdown {
+  width: 100%;
+  margin: 2px 0 0;
+  padding: 0;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+}
+
+.form__box-inner .jq-selectbox li {
+  min-height: 18px;
+  padding: 5px 17px 6px;
+  color: #231f20;
+}
+
+.form__box-inner .jq-selectbox li.selected {
+  background-color: #a3abb1;
+  color: #fff;
+}
+
+.form__box-inner .jq-selectbox li:hover {
+  background-color: #08c;
+  color: #fff;
+}
+
+.form__box-inner .jq-selectbox li.disabled {
+  color: #aaa;
+}
+
+.form__box-inner .jq-selectbox li.disabled:hover {
+  background: none;
+}
+
+.form__box-inner .jq-selectbox li.optgroup {
+  font-weight: bold;
+}
+
+.form__box-inner .jq-selectbox li.optgroup:hover {
+  background: none;
+  color: #231f20;
+  cursor: default;
+}
+
+.form__box-inner .jq-selectbox li.option {
+  padding-left: 25px;
+}
+
+
+/* Textarea — большое поле для сообщения.
+   resize: none убирает "ручку" изменения размера.
+   transition — плавное изменение рамки при фокусе. */
+.form__box-inner textarea {
+  outline: none;
+  border: 1px solid #e6e6e6;
+  padding: 10px;
+  height: 208px;
+  resize: none;
+  margin-bottom: 40px;
+  transition: border-color 0.2s ease;
+}
+
+.form__box-inner textarea:focus {
+  border-color: #ffc222;
+}
+
+/* Кнопка отправки — прозрачный фон, рамка и стрелка от .default-btn.
+   float: right прижимает кнопку к правому краю textarea. */
+.form__box-inner button {
+  background-color: transparent;
+  color: #282828;
+  float: right;
+}
+
+
+/* ==========================================================================
+   СЕКЦИЯ ПРЕИМУЩЕСТВА (.advantages)
+   Тёмный блок с фото-фоном и тремя преимуществами.
+   Иконки-галочки в жёлтых квадратах рисуются через CSS :before/:after.
+   ========================================================================== */
+
+.advantages {
+  background-image: url(../img/adv-fon.jpg);
+  padding: 55px 0px 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 285px;
+  background-size: cover;
+}
+
+/* Три блока преимуществ в ряд — тоже Grid.
+   Та же логика что у .services__items: три равных столбца.
+   place-items: center — выравнивает каждый grid-элемент
+   по центру своей ячейки (и горизонтально, и вертикально).
+   Это сокращение от: align-items: center + justify-items: center. */
+.advantages__inner {
+  color: #fff;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  text-align: center;
+}
+
+.advantages-item {
+  max-width: 360px;
+  padding: 0px 20px;
+}
+
+/* Заголовок преимущества — с отступом сверху 60px,
+   потому что там живёт иконка (жёлтый квадрат с галочкой).
+   transition — плавное изменение цвета при наведении на блок. */
+.advantages__title {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  padding: 60px 0px 15px;
+  position: relative;
+}
+
+/* Жёлтый квадрат над заголовком.
+   left: 50% + transform: translateX(-50%) — центрирует квадрат. */
+.advantages__title:before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ffc222;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: background-color 0.3s ease;
+}
+
+/* При наведении на блок преимущества — квадрат заливается жёлтым.
+   :hover на .advantages-item, :before на .advantages__title —
+   это называется "дочерний селектор через hover родителя". */
+.advantages-item:hover .advantages__title:before {
+  background-color: rgba(255, 194, 34, 0.3);
+}
+
+/* При наведении на блок иконка галочки "пульсирует".
+   animation: pulse — описан выше в @keyframes. */
+.advantages-item:hover .advantages__title:after {
+  animation: pulse 0.5s ease;
+}
+
+/* Иконка галочки (\f00c) внутри жёлтого квадрата. */
+.advantages__title:after {
+  position: absolute;
+  font-family: 'icomoon';
+  content: '\f00c';
+  font-size: 14px;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.advantages__text {
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #d3d2d2;
+}
+
+
+/* ==========================================================================
+   СЕКЦИЯ НОВОСТИ (.news)
+   Три колонки: слайдер с цитатами слева и две карточки новостей справа.
+   padding-bottom: 110px — резервирует место для кнопок слайдера,
+   которые выезжают за пределы блока (bottom: -110px).
+   ========================================================================== */
+
+.news {
+  padding: 50px 0px 110px;
+  background-color: #f9f9f9;
+}
+
+/* Flexbox: слайдер (широкий) + две карточки (узкие) в ряд. */
+.news__inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Слайдер с цитатами — белая карточка с тенью.
+   Большой отступ сверху (60px) — место для жёлтого значка кавычек. */
+.news__slider {
+  max-width: 555px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 5px 15.36px 0.64px rgba(128, 127, 127, 0.13);
+  padding: 60px 35px 45px 70px;
+  position: relative;
+}
+
+/* Жёлтый блок с иконкой кавычек в верхнем левом углу карточки. */
+.news__slider:before {
+  font-family: 'icomoon';
+  content: "\f10e";
+  position: absolute;
+  top: 0;
+  left: 70px;
+  color: #fff;
+  font-size: 16px;
+  width: 65px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background-color: #ffc222;
+}
+
+/* Карточка новости — содержит изображение, заголовок и текст.
+   transition — плавный подъём при наведении. */
+.news__blog {
+  max-width: 260px;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+/* При наведении карточка новости поднимается вверх. */
+.news__blog:hover {
+  transform: translateY(-5px);
+}
+
+/* Обёртка изображения — position: relative для бейджа с датой.
+   overflow: hidden — zoom-эффект не вылезет за края блока с фото. */
+.news__images {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Изображение карточки новости занимает всю ширину блока.
+   display: block — убирает пробел под изображением (inline-зазор).
+   transition — плавное масштабирование при наведении на карточку. */
+.news__images img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.45s ease;
+}
+
+/* При наведении на карточку (.news__blog) — фото плавно увеличивается.
+   overflow: hidden на .news__images не даёт изображению вылезти за рамки. */
+.news__blog:hover .news__images img {
+  transform: scale(1.07);
+}
+
+/* Жёлтый бейдж с датой в левом верхнем углу изображения. */
+.news__date {
+  position: absolute;
+  background-color: #ffc222;
+  height: 50px;
+  width: 50px;
+  color: #fff;
+  text-align: center;
+  padding-top: 30px;
+  font-weight: 700;
+  top: 0px;
+  left: 10px;
+}
+
+/* Ссылка на новость внутри заголовка карточки. */
+.news__blog-title {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #242424;
+  padding: 12px 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.news__blog-title a {
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.news__blog-title a:hover {
+  color: #ffc222;
+}
+
+.news__blog-text {
+  letter-spacing: 0.1px;
+  color: #5e5e5e;
+}
+
+/* Заголовок цитаты внутри слайдера. */
+.news__slider-title {
+  font-size: 18px;
+  line-height: 24px;
+  color: #242424;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+}
+
+.news__slider-text {
+  margin-bottom: 30px;
+}
+
+/* <cite> — семантический тег для автора цитаты.
+   Браузер по умолчанию делает его курсивным,
+   мы переопределяем стиль через класс. */
+.news__slider-author {
+  letter-spacing: 0.1px;
+  color: #212020;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Кнопки навигации слайдера новостей вынесены НИЖЕ блока.
+   bottom: -110px — выезжают за нижний край карточки. */
+.news__slider-inner .slick-btn {
+  top: auto;
+  bottom: -110px;
+}
+
+.news__slider-inner .slick-next {
+  right: -35px;
+}
+
+.news__slider-inner .slick-prev {
+  left: auto;
+  right: 20px;
+}
+
+.news__slider-inner .slick-disabled {
+  border-color: #dadada;
+}
+
+.news__slider-inner .slick-disabled:before {
+  color: #dadada;
+}
+
+
+/* ==========================================================================
+   ФУТЕР (.footer)
+   Тёмно-серый блок с информацией о компании слева и картой справа.
+   ========================================================================== */
+
+.footer__content {
+  background-color: #595959;
+  padding: 20px 0px 30px;
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__map {
+  padding-top: 10px;
+}
+
+/* Iframe карты — display: block убирает лишний пробел снизу.
+   max-width: 100% — карта не вылезет за пределы своего блока. */
+.footer__map iframe {
+  display: block;
+  max-width: 100%;
+}
+
+/* Кнопка консультации в футере — float убираем (в шапке была float: right). */
+.footer__inner .header__btn {
+  float: none;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.footer__info {
+  max-width: 360px;
+}
+
+.footer__title {
+  font-weight: 500;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  line-height: 36px;
+  letter-spacing: 0.5px;
+}
+
+.footer__text {
+  color: #d3d2d2;
+  margin-bottom: 20px;
+}
+
+/* Список контактов в <address> — убираем лишние отступы. */
+.footer__list {
+  padding-top: 10px;
+}
+
+.footer__list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__list li {
+  margin-top: 10px;
+}
+
+/* Ссылки в списке контактов — белые, на сером фоне.
+   padding-left: 33px резервирует место для иконки.
+   transition — плавное изменение цвета при наведении. */
+.footer__list a {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.25px;
+  color: #fff;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  padding-left: 33px;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.footer__list a:hover {
+  color: #ffc222;
+}
+
+/* Иконки контактов — жёлтые, выровнены по левому краю. */
+.footer__list a:before {
+  font-family: 'icomoon';
+  position: absolute;
+  left: 0;
+  color: #ffc222;
+}
+
+.footer__list .footer__phone:before {
+  content: '\f095';
+  left: 3px;
+}
+
+.footer__list .footer__email:before {
+  content: '\f003';
+}
+
+.footer__list .footer__adress:before {
+  content: '\f041';
+  left: 3px;
+}
+
+.footer__copy {
+  background-color: #303030;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  line-height: 24px;
+  padding: 8px 0px;
+  font-weight: 400;
+}
+
+
+/* ==========================================================================
+   МОДАЛЬНОЕ ОКНО — СТИЛИ ФОРМЫ (#modal)
+   ========================================================================== */
+
+#modal {
+  width: 300px;
+}
+
+#modal input {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  outline: none;
+  height: 40px;
+  border: 1px solid #e6e6e6;
+  padding: 0px 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  transition: border-color 0.2s ease;
+}
+
+#modal input:focus {
+  border-color: #ffc222;
+}
+
+#modal input[type="submit"] {
+  background-color: #ffc222;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#modal input[type="submit"]:hover {
+  background-color: #e6a800;
+  transform: translateY(-2px);
+}
+
+
+/* ==========================================================================
+   КНОПКА БУРГЕР-МЕНЮ (.header__btn-menu)
+   Иконка-гамбургер для мобильных устройств.
+   По умолчанию скрыта — показывается только в media.css
+   при ширине экрана 768px и меньше.
+   ========================================================================== */
+
+/* display: none — скрыта на десктопе.
+   font-size: 28px — иконка достаточно крупная для тапа пальцем. */
+.header__btn-menu {
+  display: none;
+  float: right;
+  font-size: 28px;
+}
