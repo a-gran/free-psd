@@ -1,121 +1,32 @@
-<<<<<<< HEAD
-/* ==========================================================================
-   ГЛОБАЛЬНЫЙ СБРОС И БАЗОВЫЕ НАСТРОЙКИ
-   Эти правила применяются ко всем элементам страницы сразу.
-   Делаем это первым делом, чтобы браузер не добавлял свои
-   "умолчания", которые могут сломать нашу разметку.
-   ========================================================================== */
-
-/* box-sizing: border-box — говорит браузеру:
-   "ширина элемента — это его полная ширина вместе с padding и border,
-   а не только внутренняя область".
-   Без этого, если задать width: 200px и padding: 10px,
-   реальная ширина стала бы 220px — это путает и ломает сетку.
-   Звёздочка (*) означает "применить ко всем элементам". */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-* {
+/* ===================================================================* {
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD
 /* Убираем подчёркивание у всех ссылок по умолчанию —
    дизайн сам решает, где нужна линия, а где нет.
    display: inline-block нужен, чтобы можно было задавать
    ссылкам padding и height, как обычным блокам. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 a {
   text-decoration: none;
   display: inline-block;
 }
 
-<<<<<<< HEAD
 /* Браузеры по умолчанию добавляют маркеры (точки/цифры) к спискам
    и отступы. Сбрасываем всё это — стили зададим там, где нужно. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 ul, li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-<<<<<<< HEAD
-/* ==========================================================================
-   СБРОС СТИЛЕЙ ЗАГОЛОВКОВ (h1–h6)
-   Браузер по умолчанию задаёт заголовкам крупный жирный шрифт
-   и вертикальные отступы (margin). Это ломает дизайн, если мы
-   заменяем <div class="title"> на <h2 class="title">:
-   заголовок вдруг стал большим и жирным "сам по себе".
-
-   Решение: сбросить ВСЕ браузерные стили заголовков до нуля.
-   Визуальный стиль (размер, цвет, жирность) задаётся исключительно
-   через классы (.services__title, .about__title и т.д.) — так дизайн
-   не зависит от того, какой тег использован: div, h2 или h3.
-   ========================================================================== */
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;         /* убираем вертикальные отступы браузера */
-  padding: 0;        /* убираем внутренние отступы браузера */
-  font-size: inherit;   /* наследует размер от родителя (не "крупный" браузерный) */
-  font-weight: inherit; /* наследует жирность от родителя (не "bold" браузерный) */
-  line-height: inherit; /* наследует межстрочный интервал */
-}
-
-/* Аналогично сбрасываем стили <blockquote> (цитата) и <cite> (автор цитаты),
-   которые браузер по умолчанию делает курсивными с отступами. */
-blockquote, cite {
-  margin: 0;
-  padding: 0;
-  font-style: normal; /* убираем курсив по умолчанию */
-}
-
-/* Сбрасываем стили <figure> (контейнер медиа) и <address> (контакты):
-   браузер добавляет margin и курсив — убираем. */
-figure, address {
-  margin: 0;
-  padding: 0;
-  font-style: normal;
-}
-
-
-/* ==========================================================================
-   КОНТЕЙНЕР
-   Универсальный блок-обёртка для контента всех секций.
-   Нужен, чтобы контент не прилипал к краям экрана
-   и не растягивался на всю ширину монитора.
-   ========================================================================== */
-
-/* max-width: 1170px — контент не будет шире 1170px
-   (типичная ширина для десктопного дизайна).
-   margin: 0 auto — центрирует блок горизонтально на странице.
-   padding: 0 15px — защитные поля слева и справа,
-   чтобы текст не прилипал к краю на маленьких экранах. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.container {
+/* ===================================================================.container {
   max-width: 1170px;
   margin: 0 auto;
   padding: 0 15px;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   БАЗОВАЯ ТИПОГРАФИКА (тело страницы)
-   Задаём шрифт, размер и цвет для всей страницы сразу.
-   Дочерние элементы унаследуют эти значения автоматически,
-   и нам не придётся повторять их везде.
-   ========================================================================== */
-
-/* PT Serif — классический шрифт с засечками для основного текста,
-   хорошо читается в длинных абзацах.
-   font-size: 14px — стандартный базовый размер.
-   line-height: 18px — межстрочный интервал, текст не будет слипаться.
-   color: #5e5e5e — тёмно-серый (не чёрный) — мягче для глаз. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-body {
+/* ===================================================================body {
   font-family: 'PT Serif', serif;
   font-weight: 400;
   font-size: 14px;
@@ -123,46 +34,26 @@ body {
   color: #5e5e5e;
 }
 
-<<<<<<< HEAD
 /* Для шапки и некоторых заголовков используем Roboto —
    это sans-serif (без засечек), он выглядит современно
    и хорошо подходит для UI-элементов, кнопок, меню. */
 header,
 .slider__btn,
-=======
-header, 
-.slider__btn, 
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .slider__title {
   font-family: 'Roboto', sans-serif;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   ШАПКА — ВЕРХНЯЯ ТЁМНАЯ ПОЛОСКА (.header__top)
-   Узкая полоска над логотипом с телефоном, e-mail и кнопкой консультации.
-   Выполнена в тёмном цвете, чтобы визуально отделить
-   "служебную" информацию от основного меню.
-   ========================================================================== */
-
-/* Тёмно-серый фон — классический приём для верхнего инфо-бара,
-   создаёт контраст с белой основной шапкой ниже. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.header__top {
+/* ===================================================================.header__top {
   background-color: #303030;
 }
 
-<<<<<<< HEAD
 /* Жёлтая кнопка "Бесплатная консультация".
    float: right — прижимает кнопку к правому краю контейнера,
    пока телефон и e-mail остаются слева.
    line-height: 36px — вертикальное выравнивание текста внутри.
    padding-left: 50px — оставляем место для иконки-портфеля слева.
    transition — плавное изменение фона при наведении (0.25 секунды). */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .header__btn {
   float: right;
   line-height: 36px;
@@ -171,7 +62,6 @@ header,
   padding: 5px 20px 4px 50px;
   font-size: 16px;
   position: relative;
-<<<<<<< HEAD
   transition: background-color 0.25s ease;
 }
 
@@ -185,10 +75,6 @@ header,
    Вставляется через CSS псевдоэлемент :before — не нужно
    добавлять лишний HTML-тег. Шрифт icomoon содержит все иконки проекта.
    \f0b1 — это код иконки портфеля в шрифте icomoon. */
-=======
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .header__btn:before {
   font-family: 'icomoon';
   content: "\f0b1";
@@ -197,31 +83,20 @@ header,
   color: #1b1b1b;
 }
 
-<<<<<<< HEAD
 /* Clearfix — "магический" трюк для float-элементов.
    Когда внутри блока есть float (кнопка прижата вправо),
    родительский блок "схлопывается" и не видит float-детей.
    Псевдоэлемент :after с clear: both заставляет родителя
    учитывать высоту float-элементов. */
-=======
-/* родителю внутренних элементов задается решение, 
-чтобы элемент float был на одном уровне с другими
-блоковыми элементами */
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .header__contacts:after {
   content: "";
   clear: both;
   display: block;
 }
 
-<<<<<<< HEAD
 /* Телефон и e-mail — светло-серые ссылки на тёмном фоне.
    position: relative нужен для позиционирования иконок через :before. */
 .header__phone,
-=======
-.header__phone, 
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .header__email {
   color: #cbcacb;
   letter-spacing: 0.25px;
@@ -229,23 +104,16 @@ header,
   position: relative;
 }
 
-<<<<<<< HEAD
 /* Отступы телефона: слева — место для иконки трубки,
    справа — пробел между телефоном и e-mail. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .header__phone {
   padding-left: 20px;
   padding-right: 30px;
 }
 
-<<<<<<< HEAD
 /* Иконки перед телефоном (\f095 — трубка) и e-mail (\f003 — конверт).
    Жёлтый цвет — акцентный цвет сайта, создаёт визуальный ритм. */
 .header__phone:before,
-=======
-.header__phone:before, 
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .header__email:before {
   font-family: 'icomoon';
   content: "\f095";
@@ -254,10 +122,7 @@ header,
   color: #ffc222;
 }
 
-<<<<<<< HEAD
 /* Переопределяем иконку для e-mail — конверт вместо трубки. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .header__email:before {
   content: "\f003";
 }
@@ -266,55 +131,30 @@ header,
   padding-left: 24px;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   ШАПКА — ОСНОВНАЯ ЧАСТЬ (.header__content)
-   Блок с логотипом слева и навигационным меню справа.
-   ========================================================================== */
-
-/* Вертикальные отступы создают "воздух" вокруг логотипа и меню. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.header__content {
+/* ===================================================================.header__content {
   padding: 34px 0px 23px;
 }
 
-<<<<<<< HEAD
 /* Flexbox — современный способ расположить логотип и меню
    в одну строку с автоматическим расстоянием между ними.
    justify-content: space-between — логотип прижат влево,
    меню прижато вправо, пространство распределяется между ними. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .header__content-inner {
   display: flex;
   justify-content: space-between;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   НАВИГАЦИОННОЕ МЕНЮ (.menu)
-   Горизонтальный список ссылок на разделы сайта.
-   ========================================================================== */
-
-/* Пункты меню по умолчанию — блочные элементы (каждый на новой строке).
-   inline-block делает их строчными — пункты встают в ряд. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.menu li {
+/* ===================================================================.menu li {
   display: inline-block;
 }
 
-<<<<<<< HEAD
 /* Стили для ссылок меню:
    border: 1px solid transparent — "невидимая" рамка.
    Она уже занимает место, поэтому при наведении (hover)
    рамка просто становится жёлтой без сдвига соседних элементов.
    transition: all .3s — плавное появление рамки за 0.3 секунды. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .menu a {
   color: #323232;
   font-size: 16px;
@@ -324,54 +164,24 @@ header,
   transition: all .3s;
 }
 
-<<<<<<< HEAD
 /* При наведении рамка становится видимой (жёлтой). */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .menu a:hover {
   border-color: #ffc222;
 }
 
-<<<<<<< HEAD
 /* Дополнительный отступ между пунктами меню —
    чтобы рамки соседних ссылок не сливались. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .menu li+li {
   padding-left: 10px;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   МОДАЛЬНОЕ ОКНО (#modal)
-   Скрытый блок с формой, который появляется поверх страницы
-   при клике на кнопки "Бесплатная консультация" / "Оставить заявку".
-   Управляется библиотекой Fancybox через data-fancybox в HTML.
-   ========================================================================== */
-
-/* Скрываем блок по умолчанию. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-#modal {
+/* ===================================================================#modal {
   display: none;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   СЕКЦИЯ СЛАЙДЕРА (.slider)
-   Большой полноширинный баннер с фоновым изображением,
-   поверх которого слайдер показывает заголовки и кнопки.
-   ========================================================================== */
-
-/* background-size: cover — фото масштабируется так, чтобы
-   полностью покрыть блок, не оставляя пустых мест.
-   background-position: center — фото всегда центрировано.
-   min-height: 500px — минимальная высота, чтобы контент не сплющился. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.slider {
+/* ===================================================================.slider {
   background-image: url(../img/slider-fon.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -379,17 +189,13 @@ header,
   min-height: 500px;
 }
 
-<<<<<<< HEAD
 /* Убираем синюю рамку фокуса (outline) у слайдов —
    она появляется когда Slick навигирует клавиатурой,
    выглядит некрасиво на фоновом изображении. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .slider__item {
   outline: none;
 }
 
-<<<<<<< HEAD
 /* Контент каждого слайда центрируем и ограничиваем ширину —
    чтобы на широких экранах текст не растягивался на всю ширину.
    padding-top: 110px опускает контент вниз от верхнего края слайда.
@@ -399,24 +205,17 @@ header,
    animation-duration: 0.7s — длительность одного цикла.
    animation-fill-mode: both — стили из первого кадра применяются
    до начала анимации (элемент невидим до старта). */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .slider__item-content {
   text-align: center;
   padding-top: 110px;
   max-width: 665px;
   margin: 0 auto;
-<<<<<<< HEAD
   animation: fadeInUp 0.7s ease both;
 }
 
 /* Крупный белый заголовок слайда.
    text-transform: uppercase — весь текст заглавными буквами.
    letter-spacing: 1.5px — разряд букв улучшает читаемость верхнего регистра. */
-=======
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .slider__title {
   text-transform: uppercase;
   font-size: 30px;
@@ -427,10 +226,7 @@ header,
   margin-bottom: 22px;
 }
 
-<<<<<<< HEAD
 /* Подзаголовок слайда — чуть меньше и светлее чем заголовок. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .slider__text {
   font-size: 18px;
   line-height: 24px;
@@ -438,57 +234,8 @@ header,
   margin-bottom: 50px;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   @KEYFRAMES — АНИМАЦИИ
-   @keyframes описывает "сценарий" анимации: что происходит
-   в начале (from / 0%) и в конце (to / 100%).
-   Браузер сам плавно изменяет свойства между этими точками.
-
-   Использование: задать элементу animation: имяАнимации длительность.
-   ========================================================================== */
-
-/* fadeInUp — элемент появляется снизу вверх с нарастанием прозрачности.
-   Используется для контента слайдера.
-   from: элемент прозрачный (opacity: 0) и сдвинут вниз на 25px.
-   to:   элемент полностью видим и на своём месте. */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* pulse — пульсирующее увеличение, как удар сердца.
-   Используется для иконок карточек при наведении.
-   Масштаб: обычный (1) → чуть больше (1.12) → снова обычный (1). */
-@keyframes pulse {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.12); }
-  100% { transform: scale(1); }
-}
-
-
-/* ==========================================================================
-   УНИВЕРСАЛЬНАЯ КНОПКА (.default-btn)
-   Используется во многих секциях сайта — в слайдере, услугах, о компании.
-   Характерная особенность: правая жёлтая "полочка" со стрелкой.
-   ========================================================================== */
-
-/* border-right-width: 20px — правая граница в 20px создаёт
-   визуальный "хвост" кнопки, в котором живёт стрелка.
-   position: relative — нужно для позиционирования стрелки через :after.
-   transition — плавное изменение при hover:
-     transform — для эффекта подъёма кнопки,
-     box-shadow — для появления тени. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.default-btn {
+/* ===================================================================.default-btn {
   display: inline-block;
   font-size: 14px;
   line-height: 24px;
@@ -499,7 +246,6 @@ header,
   border-right-width: 20px;
   position: relative;
   outline: none;
-<<<<<<< HEAD
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -514,10 +260,6 @@ header,
 /* Стрелка ›  вставляется через :after — не нужен HTML-тег.
    top: 50% + transform: translateY(-50%) — идеальное центрирование по вертикали.
    right: -12px — стрелка находится внутри жёлтой полочки. */
-=======
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .default-btn:after {
   content: "\f105";
   font-family: 'icomoon';
@@ -527,31 +269,15 @@ header,
   right: -12px;
 }
 
-<<<<<<< HEAD
 /* position: relative на обёртке слайдера нужен,
    чтобы кнопки-стрелки навигации (slick-prev/next)
    с position: absolute позиционировались относительно него. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .slider__inner {
   position: relative;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   КНОПКИ НАВИГАЦИИ СЛАЙДЕРА (.slick-btn)
-   Стрелки "влево" / "вправо" для переключения слайдов.
-   Создаются JavaScript-библиотекой Slick, мы только стилизуем их.
-   ========================================================================== */
-
-/* position: absolute — кнопки "плавают" поверх слайдера.
-   z-index: 3 — поверх фонового изображения.
-   top: 70% — кнопки расположены в нижней трети слайдера.
-   transition — плавное изменение фона при наведении. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.slick-btn {
+/* ===================================================================.slick-btn {
   position: absolute;
   top: 70%;
   z-index: 3;
@@ -561,7 +287,6 @@ header,
   cursor: pointer;
   outline: none;
   background-color: #ffc222;
-<<<<<<< HEAD
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -573,16 +298,11 @@ header,
 /* Когда кнопка неактивна (нет следующего/предыдущего слайда),
    Slick добавляет класс .slick-disabled.
    Убираем жёлтый фон, отключаем hover-эффект. */
-=======
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .slick-btn.slick-disabled {
   cursor: default;
   background-color: transparent;
 }
 
-<<<<<<< HEAD
 .slick-btn.slick-disabled:hover {
   transform: none;
 }
@@ -590,8 +310,6 @@ header,
 /* Иконка стрелки внутри кнопки.
    Двойной transform: translate(-50%, -50%) + top/left: 50% —
    идеальное центрирование иконки внутри квадратной кнопки. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .slick-btn:before {
   position: absolute;
   top: 50%;
@@ -617,24 +335,13 @@ header,
   left: 0;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   СЕКЦИЯ УСЛУГИ (.services)
-   Три карточки услуг в ряд с иконкой, заголовком, описанием и кнопками.
-   ========================================================================== */
-
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.services {
+/* ===================================================================.services {
   padding: 50px 0px 30px;
 }
 
-<<<<<<< HEAD
 /* Заголовочные блоки секций "Услуги" и "Новости" —
    одинаковая структура: заголовок+текст слева, кнопка справа. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .services__top,
 .news__top {
   display: flex;
@@ -642,32 +349,22 @@ header,
   margin-bottom: 60px;
 }
 
-<<<<<<< HEAD
 /* Блок с заголовком и описанием секции.
    padding-left: 140px — оставляем слева место для жёлтой линии-декора.
    position: relative — нужно для абсолютно позиционированной линии (:before). */
 .services__title-box,
 .form__title-box,
-=======
-.services__title-box, 
-.form__title-box, 
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .news__title-box {
   max-width: 520px;
   padding-left: 140px;
   position: relative;
 }
 
-<<<<<<< HEAD
 /* Жёлтая горизонтальная линия-акцент перед заголовком.
    Вставляется через :before — не нужен лишний HTML.
    Ширина 100px, высота 2px — тонкая декоративная черта. */
 .services__title-box:before,
 .form__title-box:before,
-=======
-.services__title-box:before, 
-.form__title-box:before, 
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .news__title-box:before {
   content: "";
   position: absolute;
@@ -675,18 +372,11 @@ header,
   height: 2px;
   background-color: #ffc222;
   left: 0;
-<<<<<<< HEAD
   top: 11px;
 }
 
 /* Заголовки секций — крупнее основного текста, жирнее, тёмного цвета. */
 .services__title,
-=======
-  top: 11px
-}
-
-.services__title, 
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .form__title,
 .news__title {
   font-size: 24px;
@@ -697,21 +387,14 @@ header,
   margin-bottom: 10px;
 }
 
-<<<<<<< HEAD
 .services__text,
-=======
-.services__text, 
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .form__text,
 .news__text {
   letter-spacing: 0.1px;
 }
 
-<<<<<<< HEAD
 /* Кнопки "Показать все услуги" / "Открыть все новости".
    transition — плавное изменение цвета рамки при наведении. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .services__btn a,
 .news__btn a {
   color: #373636;
@@ -719,7 +402,6 @@ header,
   letter-spacing: 0.25px;
   padding: 5px 38px;
   border: 3px solid #e6e6e6;
-<<<<<<< HEAD
   transition: border-color 0.25s ease, color 0.25s ease;
 }
 
@@ -758,24 +440,12 @@ header,
 /* max-width здесь больше не нужен: ширину карточки теперь
    контролирует Grid (колонка 1fr), а не сам элемент. */
 .services__item {
-=======
-}
-
-.services__items {
-  display: flex;
-  justify-content: space-between;
-}
-
-.services__item {
-  max-width: 360px;
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
   text-align: center;
   padding: 30px 0px 80px;
   position: relative;
   min-height: 375px;
   background-color: #f9f9f9;
   box-shadow: 0px 7px 24.3px 2.7px rgba(91, 89, 89, 0.14);
-<<<<<<< HEAD
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -800,8 +470,6 @@ header,
    это значит эффект срабатывает при наведении на ЛЮБУЮ часть карточки. */
 .services__item:hover img {
   transform: scale(1.1);
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 }
 
 .services__item-title {
@@ -815,18 +483,11 @@ header,
 
 .services__item-text {
   letter-spacing: 0.1px;
-<<<<<<< HEAD
   padding: 0px 30px 30px;
 }
 
 /* Блок с кнопками прибит к нижнему краю карточки.
    position: absolute + bottom: 40px — не зависит от длины текста. */
-=======
-  padding: 0 35px;
-  padding: 0px 30px 30px;
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .services__item-btn {
   position: absolute;
   bottom: 40px;
@@ -835,7 +496,6 @@ header,
 }
 
 .services__item-btn .default-btn {
-<<<<<<< HEAD
   color: #373636;
 }
 
@@ -844,15 +504,6 @@ header,
 }
 
 /* Ссылка "Подробнее" — подчёркнута снизу вместо обычного underline. */
-=======
-  color: #373636
-}
-
-.services__item-btn .default-btn:after {
-  color: #fff
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .services__item-link {
   color: #050505;
   font-family: 'Roboto', sans-serif;
@@ -860,16 +511,8 @@ header,
   margin-right: 60px;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   СЕКЦИЯ О КОМПАНИИ (.about)
-   Блок с фоновым фото и текстом о компании слева.
-   ========================================================================== */
-
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.about {
+/* ===================================================================.about {
   background-image: url(../img/about-fon.jpg);
   background-size: cover;
   background-position: center;
@@ -878,11 +521,8 @@ header,
   padding: 25px 0px 45px;
 }
 
-<<<<<<< HEAD
 /* Ограничиваем ширину блока с текстом — 545px,
    чтобы текст не залезал на правую часть фото с людьми. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .about__inner {
   max-width: 545px;
 }
@@ -897,7 +537,6 @@ header,
 }
 
 .about__text {
-<<<<<<< HEAD
   margin-bottom: 20px;
   letter-spacing: 0.1px;
   line-height: 24px;
@@ -927,29 +566,14 @@ header,
   color: #ffc222;
   position: absolute;
   left: 0;
-=======
-  margin-bottom: 30px;
-  letter-spacing: 0.1px;
-  line-height: 24px;
-  color: #d3d2d2;
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 }
 
 .about__btn.default-btn:after {
   color: #000;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   СЕКЦИЯ ФОРМА (.form)
-   Форма обратной связи с декоративным фоновым изображением справа.
-   Разделена на две колонки: поля слева, textarea справа.
-   ========================================================================== */
-
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.form {
+/* ===================================================================.form {
   padding-top: 30px;
 }
 
@@ -966,10 +590,7 @@ header,
   padding-top: 45px;
 }
 
-<<<<<<< HEAD
 /* Две колонки внутри формы. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .form__box-inner {
   display: flex;
   justify-content: space-between;
@@ -985,10 +606,7 @@ header,
   width: 100%;
 }
 
-<<<<<<< HEAD
 /* label, input и textarea — блочные элементы на всю ширину колонки. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .form__box-inner label, .form__box-inner input, .form__box-inner textarea {
   display: block;
   width: 100%;
@@ -1000,19 +618,15 @@ header,
   font-family: 'Roboto', sans-serif;
 }
 
-<<<<<<< HEAD
 /* Поля ввода — тонкая серая рамка, плавное выделение при фокусе.
    transition на border-color — рамка плавно меняет цвет
    когда пользователь кликает в поле (focus). */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .form__box-inner input {
   margin-bottom: 8px;
   outline: none;
   height: 40px;
   border: 1px solid #e6e6e6;
   padding: 0px 10px;
-<<<<<<< HEAD
   transition: border-color 0.2s ease;
 }
 
@@ -1020,8 +634,6 @@ header,
    пользователь понимает что именно это поле сейчас активно. */
 .form__box-inner input:focus {
   border-color: #ffc222;
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 }
 
 .form__box-inner select {
@@ -1029,17 +641,8 @@ header,
   padding-left: 17px;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   КАСТОМНЫЙ СТИЛЬ SELECT (jQuery FormStyler)
-   Библиотека FormStyler заменяет стандартный выпадающий список
-   кастомным, который выглядит одинаково во всех браузерах.
-   ========================================================================== */
-
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.form__box-inner .jq-selectbox.jqselect {
+/* ===================================================================.form__box-inner .jq-selectbox.jqselect {
   display: block;
   width: 100%;
 }
@@ -1050,10 +653,7 @@ header,
   padding-left: 17px;
 }
 
-<<<<<<< HEAD
 /* Стрелка кастомного селекта — иконка из icomoon, повёрнутая на 90°. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .form__box-inner .jq-selectbox__trigger-arrow:before {
   content: "\f105";
   font-family: 'icomoon';
@@ -1085,11 +685,7 @@ header,
 
 .form__box-inner .jq-selectbox li:hover {
   background-color: #08c;
-<<<<<<< HEAD
   color: #fff;
-=======
-  color: #Ffff;
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 }
 
 .form__box-inner .jq-selectbox li.disabled {
@@ -1114,13 +710,10 @@ header,
   padding-left: 25px;
 }
 
-<<<<<<< HEAD
 
 /* Textarea — большое поле для сообщения.
    resize: none убирает "ручку" изменения размера.
    transition — плавное изменение рамки при фокусе. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .form__box-inner textarea {
   outline: none;
   border: 1px solid #e6e6e6;
@@ -1128,7 +721,6 @@ header,
   height: 208px;
   resize: none;
   margin-bottom: 40px;
-<<<<<<< HEAD
   transition: border-color 0.2s ease;
 }
 
@@ -1138,27 +730,14 @@ header,
 
 /* Кнопка отправки — прозрачный фон, рамка и стрелка от .default-btn.
    float: right прижимает кнопку к правому краю textarea. */
-=======
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .form__box-inner button {
   background-color: transparent;
   color: #282828;
   float: right;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   СЕКЦИЯ ПРЕИМУЩЕСТВА (.advantages)
-   Тёмный блок с фото-фоном и тремя преимуществами.
-   Иконки-галочки в жёлтых квадратах рисуются через CSS :before/:after.
-   ========================================================================== */
-
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.advantages {
+/* ===================================================================.advantages {
   background-image: url(../img/adv-fon.jpg);
   padding: 55px 0px 40px;
   background-repeat: no-repeat;
@@ -1167,7 +746,6 @@ header,
   background-size: cover;
 }
 
-<<<<<<< HEAD
 /* Три блока преимуществ в ряд — тоже Grid.
    Та же логика что у .services__items: три равных столбца.
    place-items: center — выравнивает каждый grid-элемент
@@ -1179,13 +757,6 @@ header,
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   text-align: center;
-=======
-.advantages__inner {
-  color: #fff;
-  display: flex;
-  text-align: center;
-  justify-content: space-between;
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 }
 
 .advantages-item {
@@ -1193,12 +764,9 @@ header,
   padding: 0px 20px;
 }
 
-<<<<<<< HEAD
 /* Заголовок преимущества — с отступом сверху 60px,
    потому что там живёт иконка (жёлтый квадрат с галочкой).
    transition — плавное изменение цвета при наведении на блок. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .advantages__title {
   font-size: 18px;
   line-height: 24px;
@@ -1208,11 +776,8 @@ header,
   position: relative;
 }
 
-<<<<<<< HEAD
 /* Жёлтый квадрат над заголовком.
    left: 50% + transform: translateX(-50%) — центрирует квадрат. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .advantages__title:before {
   content: '';
   position: absolute;
@@ -1222,7 +787,6 @@ header,
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-<<<<<<< HEAD
   transition: background-color 0.3s ease;
 }
 
@@ -1240,10 +804,6 @@ header,
 }
 
 /* Иконка галочки (\f00c) внутри жёлтого квадрата. */
-=======
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .advantages__title:after {
   position: absolute;
   font-family: 'icomoon';
@@ -1257,42 +817,23 @@ header,
 .advantages__text {
   line-height: 24px;
   letter-spacing: 0.1px;
-<<<<<<< HEAD
   color: #d3d2d2;
 }
 
 
-/* ==========================================================================
-   СЕКЦИЯ НОВОСТИ (.news)
-   Три колонки: слайдер с цитатами слева и две карточки новостей справа.
-   padding-bottom: 110px — резервирует место для кнопок слайдера,
-   которые выезжают за пределы блока (bottom: -110px).
-   ========================================================================== */
-
-=======
-  color: #d3d2d2;  
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.news {
+/* ===================================================================.news {
   padding: 50px 0px 110px;
   background-color: #f9f9f9;
 }
 
-<<<<<<< HEAD
 /* Flexbox: слайдер (широкий) + две карточки (узкие) в ряд. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .news__inner {
   display: flex;
   justify-content: space-between;
 }
 
-<<<<<<< HEAD
 /* Слайдер с цитатами — белая карточка с тенью.
    Большой отступ сверху (60px) — место для жёлтого значка кавычек. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .news__slider {
   max-width: 555px;
   width: 100%;
@@ -1302,10 +843,7 @@ header,
   position: relative;
 }
 
-<<<<<<< HEAD
 /* Жёлтый блок с иконкой кавычек в верхнем левом углу карточки. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .news__slider:before {
   font-family: 'icomoon';
   content: "\f10e";
@@ -1321,7 +859,6 @@ header,
   background-color: #ffc222;
 }
 
-<<<<<<< HEAD
 /* Карточка новости — содержит изображение, заголовок и текст.
    transition — плавный подъём при наведении. */
 .news__blog {
@@ -1359,17 +896,6 @@ header,
 }
 
 /* Жёлтый бейдж с датой в левом верхнем углу изображения. */
-=======
-.news__blog {
-  max-width: 260px;
-  width: 100%;
-}
-
-.news__images {
-  position: relative;
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .news__date {
   position: absolute;
   background-color: #ffc222;
@@ -1383,10 +909,7 @@ header,
   left: 10px;
 }
 
-<<<<<<< HEAD
 /* Ссылка на новость внутри заголовка карточки. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .news__blog-title {
   font-size: 16px;
   font-weight: 500;
@@ -1396,7 +919,6 @@ header,
   font-family: 'Roboto', sans-serif;
 }
 
-<<<<<<< HEAD
 .news__blog-title a {
   color: inherit;
   transition: color 0.2s ease;
@@ -1406,17 +928,12 @@ header,
   color: #ffc222;
 }
 
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .news__blog-text {
   letter-spacing: 0.1px;
   color: #5e5e5e;
 }
 
-<<<<<<< HEAD
 /* Заголовок цитаты внутри слайдера. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .news__slider-title {
   font-size: 18px;
   line-height: 24px;
@@ -1431,23 +948,17 @@ header,
   margin-bottom: 30px;
 }
 
-<<<<<<< HEAD
 /* <cite> — семантический тег для автора цитаты.
    Браузер по умолчанию делает его курсивным,
    мы переопределяем стиль через класс. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .news__slider-author {
   letter-spacing: 0.1px;
   color: #212020;
   font-family: 'Roboto', sans-serif;
 }
 
-<<<<<<< HEAD
 /* Кнопки навигации слайдера новостей вынесены НИЖЕ блока.
    bottom: -110px — выезжают за нижний край карточки. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .news__slider-inner .slick-btn {
   top: auto;
   bottom: -110px;
@@ -1462,11 +973,7 @@ header,
   right: 20px;
 }
 
-<<<<<<< HEAD
 .news__slider-inner .slick-disabled {
-=======
-.news__slider-inner .slick-disabled {  
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
   border-color: #dadada;
 }
 
@@ -1474,16 +981,8 @@ header,
   color: #dadada;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   ФУТЕР (.footer)
-   Тёмно-серый блок с информацией о компании слева и картой справа.
-   ========================================================================== */
-
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.footer__content {
+/* ===================================================================.footer__content {
   background-color: #595959;
   padding: 20px 0px 30px;
 }
@@ -1497,7 +996,6 @@ header,
   padding-top: 10px;
 }
 
-<<<<<<< HEAD
 /* Iframe карты — display: block убирает лишний пробел снизу.
    max-width: 100% — карта не вылезет за пределы своего блока. */
 .footer__map iframe {
@@ -1510,11 +1008,6 @@ header,
   float: none;
   display: inline-block;
   margin-bottom: 15px;
-=======
-.footer__inner .header__btn {
-  float: none;
-  display: inline-block;
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 }
 
 .footer__info {
@@ -1535,33 +1028,24 @@ header,
   margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
 /* Список контактов в <address> — убираем лишние отступы. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .footer__list {
   padding-top: 10px;
 }
 
-<<<<<<< HEAD
 .footer__list ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .footer__list li {
   margin-top: 10px;
 }
 
-<<<<<<< HEAD
 /* Ссылки в списке контактов — белые, на сером фоне.
    padding-left: 33px резервирует место для иконки.
    transition — плавное изменение цвета при наведении. */
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .footer__list a {
   font-size: 16px;
   line-height: 24px;
@@ -1571,7 +1055,6 @@ header,
   font-family: 'Roboto', sans-serif;
   padding-left: 33px;
   position: relative;
-<<<<<<< HEAD
   transition: color 0.2s ease;
 }
 
@@ -1580,10 +1063,6 @@ header,
 }
 
 /* Иконки контактов — жёлтые, выровнены по левому краю. */
-=======
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 .footer__list a:before {
   font-family: 'icomoon';
   position: absolute;
@@ -1596,11 +1075,7 @@ header,
   left: 3px;
 }
 
-<<<<<<< HEAD
 .footer__list .footer__email:before {
-=======
-.footer__list .footer__email:before {  
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
   content: '\f003';
 }
 
@@ -1619,15 +1094,8 @@ header,
   font-weight: 400;
 }
 
-<<<<<<< HEAD
 
-/* ==========================================================================
-   МОДАЛЬНОЕ ОКНО — СТИЛИ ФОРМЫ (#modal)
-   ========================================================================== */
-
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-#modal {
+/* ===================================================================#modal {
   width: 300px;
 }
 
@@ -1641,21 +1109,17 @@ header,
   padding: 0px 10px;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-<<<<<<< HEAD
   transition: border-color 0.2s ease;
 }
 
 #modal input:focus {
   border-color: #ffc222;
-=======
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
 }
 
 #modal input[type="submit"] {
   background-color: #ffc222;
   border: none;
   cursor: pointer;
-<<<<<<< HEAD
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -1665,25 +1129,8 @@ header,
 }
 
 
-/* ==========================================================================
-   КНОПКА БУРГЕР-МЕНЮ (.header__btn-menu)
-   Иконка-гамбургер для мобильных устройств.
-   По умолчанию скрыта — показывается только в media.css
-   при ширине экрана 768px и меньше.
-   ========================================================================== */
-
-/* display: none — скрыта на десктопе.
-   font-size: 28px — иконка достаточно крупная для тапа пальцем. */
-=======
-}
-
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
-.header__btn-menu {
+/* ===================================================================.header__btn-menu {
   display: none;
   float: right;
   font-size: 28px;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> dbec2e8c17caf4a8564ea5015c9f78c5e9352ae2
